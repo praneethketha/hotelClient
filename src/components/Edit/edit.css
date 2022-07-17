@@ -1,0 +1,24 @@
+.edit {
+}
+.profile-img {
+  border-radius: 50%;
+}
+
+.form {
+  margin: auto;
+  width: 20vw !important;
+}
+
+.edit-button {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  height: 5vh;
+  width: 7vw;
+
+  border-radius: 5px;
+}
+
+.edit-button:hover {
+  background-color: #ff6d1b;
+}

@@ -1,0 +1,11 @@
+.popular-heading {
+  color: #ff6d1b;
+  margin-left: 5em;
+  font-weight: 800;
+}
+
+@media only screen and (max-width: 820px) {
+  .popular-heading {
+    margin-left: 1em;
+  }
+}

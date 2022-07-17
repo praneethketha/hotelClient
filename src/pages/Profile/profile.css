@@ -1,0 +1,27 @@
+.profile {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-left {
+  align-items: center;
+  width: 18vw;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 70vh;
+}
+
+.profile-right {
+  width: 50vw;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 70vh;
+}
+
+@media only screen and (max-width: 820px) {
+  .profile-left {
+    width: 50px;
+  }
+
+  .profile-right {
+    width: 300px;
+  }
+}
