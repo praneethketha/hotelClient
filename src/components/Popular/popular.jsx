@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Grid from "../../Grid/grid";
+import Grid from "../Grid/grid";
 
 import goa from "../../assets/goa.jpg";
 import kedarnath from "../../assets/kedarnath.jpg";
@@ -17,8 +17,8 @@ import "./popular.css";
 
 const Popular = () => {
   return (
-    <Container className="mt-4">
-      <div>
+    <Container className="my-4">
+      <div className="w-85 mx-auto">
         <h2 className="popular-heading">Featured Cities</h2>
         <Grid
           flexDirection="row"

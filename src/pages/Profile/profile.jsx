@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
-import { Header } from "../../components";
 import ProfileSidebar from "../../components/ProfileSidebar/profileSidebar";
 
 import "./profile.css";
@@ -9,8 +8,7 @@ import "./profile.css";
 const Profile = () => {
   return (
     <>
-      <Header></Header>
-      <Container className="profile mt-5">
+      <Container className="profile">
         <Row>
           <Col className="p-0">
             <div className="profile-left">

@@ -1,36 +1,66 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./header.css";
+import logo from "./../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../store/authContext";
+import cookie from "react-cookies";
 
 const Header = () => {
+  const { handleLogOut } = useAuth();
+
+  const navigate = useNavigate();
+
+  const handleBookNow = () => {
+    if (cookie.load("token")) {
+      navigate("hotels");
+    } else {
+      navigate("login");
+    }
+  };
+
   return (
-    <header className="header p-3 bg-dark text-white">
-      <div>
-        <div className="d-flex flex-wrap align-items-center me-auto justify-content-lg-end">
-          <a href="#" className="nav-link  me-auto logo">
+    <header className="header py-2 bg-dark text-white fixed-top">
+      <div className="d-flex align-items-center w-85 mx-auto justify-content-between">
+        <section>
+          <NavLink to="/" className="nav-link logo">
+            <img src={logo} alt="logo" />
             Rentea
-          </a>
+          </NavLink>
+        </section>
+        <section className="d-flex justify-content-center align-items-center">
           <ul className="nav col-12 col-lg-auto ml-lg-auto justify-content-space-between ">
             <li>
-              <a href="#" className="nav-link px-2 text-white">
-                Home
-              </a>
+              <NavLink to="hotels" className="nav-link mx-2 text-white">
+                Hotels
+              </NavLink>
             </li>
-            <li>
-              <a href="#" className="nav-link px-5 text-white">
-                Rooms
-              </a>
-            </li>
+            {cookie.load("token") && (
+              <li>
+                <NavLink to="/profile" className="nav-link mx-2 text-white">
+                  Profile
+                </NavLink>
+              </li>
+            )}
           </ul>
-
-          <div className="text-end">
+          {cookie.load("token") ? (
             <button
+              onClick={handleLogOut}
               type="button"
-              className="btn btn-outline-light me-5 book-now"
+              className="btn btn-outline-light ms-3 book-now"
+            >
+              Log Out
+            </button>
+          ) : (
+            <button
+              onClick={handleBookNow}
+              type="button"
+              className="btn btn-outline-light ms-3 book-now"
             >
               Book Now
             </button>
-          </div>
-        </div>
+          )}
+        </section>
       </div>
     </header>
   );

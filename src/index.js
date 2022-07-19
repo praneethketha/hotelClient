@@ -4,11 +4,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
+import AuthProvider from "./store/authContext";
+import { BrowserRouter } from "react-router-dom";
+import HotelProvider from "./store/hotelContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <HotelProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </HotelProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

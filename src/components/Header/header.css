@@ -1,8 +1,21 @@
 .logo {
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: baseline;
   color: #ff6d1b !important;
-  font-size: 20px;
-  margin: 0 4em;
-  padding: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-inline: 0 !important;
+  letter-spacing: 3px;
+  gap: 5px;
+  padding: 0.25rem 0 !important;
+  font-family: 'Great Vibes', cursive;
+}
+
+.logo img{
+  width: 30px;
+  height: 35px;
+  filter: invert(100%);
 }
 
 .book-now {

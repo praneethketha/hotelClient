@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { useHotel } from "../../store/hotelContext";
 
 import "./grid.css";
 
@@ -15,6 +17,8 @@ const Grid = ({
   city4,
   city5,
 }) => {
+  const { setSearchTerm } = useHotel();
+
   return (
     <div
       className="grid"
@@ -26,114 +30,62 @@ const Grid = ({
       }}
     >
       <div>
-        <div className="popular">
+        <NavLink
+          to="hotels"
+          className="popular"
+          onClick={() => setSearchTerm(city1)}
+        >
           <img src={img1} alt="" className="popularImg" />
           <div className="popularTitle">
             <h4>{city1}</h4>
           </div>
-        </div>
-        <div className="popular">
+        </NavLink>
+        <NavLink
+          to="hotels"
+          className="popular"
+          onClick={() => setSearchTerm(city3)}
+        >
           <img src={img3} alt="" className="popularImg" />
           <div className="popularTitle">
             <h4>{city3}</h4>
           </div>
-        </div>
+        </NavLink>
       </div>
       <div>
-        <div className="popular">
+        <NavLink
+          to="hotels"
+          className="popular"
+          onClick={() => setSearchTerm(city2)}
+        >
           <img src={img2} alt="" className="popularImg" />
           <div className="popularTitle">
             <h4>{city2}</h4>
           </div>
-        </div>
+        </NavLink>
 
-        <div className="popular">
+        <NavLink
+          to="hotels"
+          className="popular"
+          onClick={() => setSearchTerm(city4)}
+        >
           <img src={img4} alt="" className="popularImg" />
           <div className="popularTitle">
             <h4>{city4}</h4>
           </div>
-        </div>
+        </NavLink>
       </div>
 
-      <div className="popular">
+      <NavLink
+        to="hotels"
+        className="popular"
+        onClick={() => setSearchTerm(city5)}
+      >
         <img src={img5} alt="" className="popularImgspecial" />
         <div className="popularTitle">
           <h4>{city5}</h4>
         </div>
-      </div>
+      </NavLink>
     </div>
-
-    // <Container>
-    // <Row>
-    //   <Col lg={8}>
-    //     <Row>
-    //       <Col lg={4}>
-    //         <div className="popular">
-    //           <img src={img1} alt="" className="popularImg" />
-    //           <div className="popularTitle">
-    //             <h1>Bengalore</h1>
-    //           </div>
-    //         </div>
-    //       </Col>
-    //       <Col lg={4}>
-    //         <div className="popular">
-    //           <img src={img1} alt="" className="popularImg" />
-    //           <div className="popularTitle">
-    //             <h1>Bengalore</h1>
-    //           </div>
-    //         </div>
-    //       </Col>
-    //       <Col lg={4}>
-    //         <div className="popular">
-    //           <img src={img1} alt="" className="popularImg" />
-    //           <div className="popularTitle">
-    //             <h1>Bengalore</h1>
-    //           </div>
-    //         </div>
-    //       </Col>
-    //     </Row>
-    //     <Row>
-    //       <Col lg={4}>
-    //         <div className="popular">
-    //           <img src={img1} alt="" className="popularImg" />
-    //           <div className="popularTitle">
-    //             <h1>Bengalore</h1>
-    //           </div>
-    //         </div>
-    //       </Col>
-    //       <Col lg={4}>
-    //         <div className="popular">
-    //           <img src={img1} alt="" className="popularImg" />
-    //           <div className="popularTitle">
-    //             <h1>Bengalore</h1>
-    //           </div>
-    //         </div>
-    //       </Col>
-    //       <Col lg={4}>
-    //         <div className="popular">
-    //           <img src={img1} alt="" className="popularImg" />
-    //           <div className="popularTitle">
-    //             <h1>Bengalore</h1>
-    //           </div>
-    //         </div>
-    //       </Col>
-    //     </Row>
-    //   </Col>
-    //   <Col lg={4}>
-    //     <div className="popular">
-    //       <img
-    //         src={img1}
-    //         alt=""
-    //         className="popularImg"
-    //         // style={{ height: "400px" }}
-    //       />
-    //       <div className="popularTitle">
-    //         <h1>Bengalore</h1>
-    //       </div>
-    //     </div>
-    //   </Col>
-    // </Row>
-    // </Container>
   );
 };
 

@@ -5,8 +5,10 @@ import Form from "react-bootstrap/Form";
 
 import profile from "../../assets/tom.jpg";
 import "./edit.css";
+import { useAuth } from "../../store/authContext";
 
 const Edit = () => {
+  const { currentUser, signupChange, handleEdit } = useAuth();
   return (
     <div className="edit  pt-3">
       <div className="text-center">
@@ -15,25 +17,47 @@ const Edit = () => {
         </NavLink>
       </div>
       <div className="text-center">
-        <img src={profile} className="profile-img mt-3" width="20%" />
+        <img
+          src={currentUser.photo}
+          alt="profile"
+          className="profile-img mt-3"
+          width="20%"
+        />
       </div>
       <div className="form mt-3">
-        <Form>
+        <Form onChange={signupChange} onSubmit={handleEdit}>
           <Form.Group className="mb-3">
             <Form.Label className="mb-0">Name</Form.Label>
-            <Form.Control type="email" placeholder="Enter name" />
+            <Form.Control
+              type="name"
+              placeholder="Enter name"
+              name="name"
+              defaultValue={currentUser.name}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label className="mb-0">Email </Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              defaultValue={currentUser.email}
+            />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label className="mb-0">Contact Numbar</Form.Label>
-            <Form.Control type="number" placeholder="Enter number" />
+            <Form.Control
+              type="number"
+              placeholder="Enter number"
+              name="contact_number"
+              defaultValue={currentUser.contact_number}
+            />
           </Form.Group>
 
-          <button className="edit-button">Submit</button>
+          <button className="edit-button" type="submit">
+            Submit
+          </button>
         </Form>
       </div>
     </div>

@@ -1,8 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Nunito&family=Roboto&display=swap");
 
-body {
-  font-family: Nunito;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+.w-85{
+  width: 85vw;
 }
