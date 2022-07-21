@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 import "./header.css";
 import logo from "./../../assets/logo.png";
@@ -21,51 +21,6 @@ const Header = () => {
   };
   return (
     <div>
-      {/* <header className="header py-2 bg-dark text-white">
-        <section className="d-flex w-85 py-3 mx-auto justify-content-between align-items-center">
-          <NavLink to="/" className="nav-link logo">
-            <img src={logo} alt="logo" />
-            Rentea
-          </NavLink>
-          <CgMenuGridO
-            className="menu color-brand"
-            onClick={() => setNavOpen(!navOpen)}
-          />
-          <nav className={`nav ${navOpen ? "open" : "close"}`}>
-            <NavLink
-              to="hotels"
-              className="nav_link active"
-              onClick={() => setNavOpen(!navOpen)}
-            >
-              Hotels
-            </NavLink>
-            {cookie.load("token") && (
-              <NavLink to="/profile" className="nav-link mx-2 text-white">
-                Profile
-              </NavLink>
-            )}
-
-            {cookie.load("token") ? (
-              <button
-                onClick={handleLogout}
-                type="button"
-                className=" book-now"
-              >
-                Log Out
-              </button>
-            ) : (
-              <button
-                onClick={handleBookNow}
-                type="button"
-                className="btn btn-outline-light ms-5 me-2 book-now"
-              >
-                Book Now
-              </button>
-            )}
-          </nav>
-        </section>
-      </header> */}
-
       <nav class=" navbar navbar-expand-lg navbar-light bg-dark">
         <div class="container">
           <NavLink to="/" className="logo">
@@ -90,7 +45,7 @@ const Header = () => {
               </NavLink>
 
               {cookie.load("token") && (
-                <NavLink to="/profile" className="nav_link mx-2 text-white ">
+                <NavLink to="/profile" className="nav_link  text-white">
                   Profile
                 </NavLink>
               )}
@@ -120,32 +75,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// <header className="fixed-top bg-white">
-//   <section className="d-flex w-85 py-3 mx-auto justify-content-between align-items-center">
-//     <h3 className="logo m-0 p-0 color-brand">PSPNEWS</h3>
-//     <CgMenuGridO
-//       className="menu color-brand"
-//       onClick={() => setNavOpen(!navOpen)}
-//     />
-//     <nav className={`nav ${navOpen ? "open" : "close"}`}>
-//       <NavLink className="nav_link active" onClick={() => setNavOpen(!navOpen)}>
-//         Home
-//       </NavLink>
-//       <NavLink className="nav_link" onClick={() => setNavOpen(!navOpen)}>
-//         Profile
-//       </NavLink>
-//       <NavLink className="nav_link" onClick={() => setNavOpen(!navOpen)}>
-//         About
-//       </NavLink>
-//       <Button className="brand_btn_2">
-//         <MdLogin style={{ marginRight: "5px" }} />
-//         Login
-//       </Button>
-//       <Button className="brand_btn_1">
-//         <HiUserAdd style={{ marginRight: "5px" }} />
-//         Sign up
-//       </Button>
-//     </nav>
-//   </section>
-// </header>;

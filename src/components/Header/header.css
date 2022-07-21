@@ -21,6 +21,7 @@
 .nav_link {
   font-size: 18px;
   margin-right: 2em;
+  text-decoration: none;
   /* font-weight: 500; */
 }
 
@@ -53,6 +54,7 @@
   .nav_link {
     font-size: 18px;
     margin-right: 2em;
+    margin-left: 0 !important;
     font-weight: 600;
   }
 
