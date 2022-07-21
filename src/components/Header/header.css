@@ -9,16 +9,54 @@
   letter-spacing: 3px;
   gap: 5px;
   padding: 0.25rem 0 !important;
-  font-family: 'Great Vibes', cursive;
+  font-family: "Great Vibes", cursive;
 }
 
-.logo img{
+.logo img {
   width: 30px;
   height: 35px;
   filter: invert(100%);
 }
 
+.nav_link {
+  font-size: 18px;
+  margin-right: 2em;
+  /* font-weight: 500; */
+}
+
+.nav_link:hover {
+  color: #ff6d1b !important;
+}
+
 .book-now {
-  background-color: #ff6d1b;
+  background-color: #ff6d1b !important;
+  color: #fff !important;
   border: none;
+}
+
+.book-now:hover {
+  background-color: #fff !important;
+  color: #ff6d1b !important;
+}
+
+.navbar-collapse {
+  flex-grow: 0 !important;
+}
+
+@media only screen and (max-width: 720px) {
+  .book-now {
+    width: 150px !important;
+    margin-top: 0.5em;
+    font-weight: 600 !important;
+  }
+
+  .nav_link {
+    font-size: 18px;
+    margin-right: 2em;
+    font-weight: 600;
+  }
+
+  .nav_link:hover {
+    color: #ff6d1b !important;
+  }
 }

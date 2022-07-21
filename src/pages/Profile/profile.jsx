@@ -8,14 +8,14 @@ import "./profile.css";
 const Profile = () => {
   return (
     <>
-      <Container className="profile">
-        <Row>
-          <Col className="p-0">
+      <Container>
+        <Row className="profile">
+          <Col lg={3} sm={2} xs={2} className="p-0">
             <div className="profile-left">
               <ProfileSidebar />
             </div>
           </Col>
-          <Col className="ps-1">
+          <Col lg={9} sm={10} xs={10} className="ps-1">
             <div className="profile-right">
               <Outlet></Outlet>
             </div>

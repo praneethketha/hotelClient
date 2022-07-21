@@ -1,0 +1,25 @@
+.admin-sidebar {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 100vh;
+  width: 15vw;
+  max-width: 15vw;
+}
+
+.admin-sidebar-list-item {
+  list-style: none;
+}
+
+.admin-sidebar-list-item:hover {
+  background-color: #ff6d1b;
+  border-radius: 5px;
+}
+
+.admin-sidebar-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: #000;
+}
+
+.admin-sidebar-link:hover {
+  color: #fff;
+}

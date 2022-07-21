@@ -1,5 +1,3 @@
-.edit {
-}
 .profile-img {
   border-radius: 50%;
 }
@@ -21,4 +19,17 @@
 
 .edit-button:hover {
   background-color: #ff6d1b;
+}
+
+@media only screen and (max-width: 1000px) {
+  .form {
+    width: 90% !important;
+  }
+
+  .edit-button {
+    width: 80px;
+  }
+  .profile-img {
+    width: 20% !important;
+  }
 }

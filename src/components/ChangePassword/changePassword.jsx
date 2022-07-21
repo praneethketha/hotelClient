@@ -34,7 +34,7 @@ const ChangePasword = () => {
             {errors.passwordConfirm && errors.passwordConfirm}
           </p>
 
-          <button className="edit-button mt-4" type="submit">
+          <button className="edit-button mt-3" type="submit">
             Submit
           </button>
         </Form>
