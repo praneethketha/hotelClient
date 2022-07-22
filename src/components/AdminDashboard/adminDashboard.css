@@ -1,0 +1,39 @@
+.dashboard {
+  height: 100vh;
+  background-color: #f7f6f2;
+  padding-top: 5em;
+  /* width: 95vw; */
+}
+
+.dashboard-top {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+}
+
+.dashboard-top-first {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 20vw;
+  height: 15vh;
+  background-color: #fff;
+}
+
+.dashboard-top-second,
+.dashboard-top-third,
+.dashboard-top-fourth {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 10vw;
+  background-color: #fff;
+
+  height: 15vh;
+}
+
+.dashboard-bottom {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: auto;
+  width: 60vw;
+  background-color: #fff;
+
+  height: 60vh;
+}

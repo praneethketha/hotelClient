@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AuthProvider from "./store/authContext";
 import { BrowserRouter } from "react-router-dom";
 import HotelProvider from "./store/hotelContext";
+import { AdminContextProvider } from "./store/adminContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,9 @@ root.render(
     <BrowserRouter>
       <HotelProvider>
         <AuthProvider>
-          <App />
+          <AdminContextProvider>
+            <App />
+          </AdminContextProvider>
         </AuthProvider>
       </HotelProvider>
     </BrowserRouter>

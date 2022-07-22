@@ -1,0 +1,470 @@
+[
+  {
+    "id": "1",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "2",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "3",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "4",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "5",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "6",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "7",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "8",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "9",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "10",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "11",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "12",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "13",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "14",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "15",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "16",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "17",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "18",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "19",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "20",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "21",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "22",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "23",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "24",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "25",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "26",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "27",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "28",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "29",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "30",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "31",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "32",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "33",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "34",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "35",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "36",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "37",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "38",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "39",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "40",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "41",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "42",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "43",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "44",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "45",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "46",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "47",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "48",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "49",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "50",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "51",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  },
+  {
+    "id": "52",
+    "hotel_name": "finix residency",
+    "base_price": "3000",
+    "rating": "4.5/5",
+    "reviews": "120",
+    "rooms": "10",
+    "location": "dehradun"
+  }
+]
