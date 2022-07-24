@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { FaBars } from "react-icons/fa";
+import { IoExitOutline } from "react-icons/io5";
+import { MdOutlineCancel } from "react-icons/md";
 
 import { NavLink } from "react-router-dom";
 import { useAdminContext } from "../../store/adminContext";
@@ -13,8 +13,10 @@ const AdminSidebar = () => {
   return (
     <div>
       <div
-        className="admin-sidebar"
-        style={{ minWidth: activeMenu ? "15vw" : "6vw" }}
+        className="admin-sidebar me-1"
+        style={{
+          width: activeMenu ? "200px" : "0px",
+        }}
       >
         <div className="d-flex justify-content-between align-content-center pt-4">
           <NavLink
@@ -24,74 +26,86 @@ const AdminSidebar = () => {
           >
             <p
               style={{ display: activeMenu ? "inline" : "none" }}
-              className="logo"
+              className=" logo"
             >
               Rentea
             </p>
           </NavLink>
-          <FaBars
-            className="toggle-button"
-            onClick={() => {
-              setActiveMenu((prevActiveMenu) => !prevActiveMenu);
-            }}
-          />
-          {/* <i className="toggle-button fa-solid fa-bars"></i> */}
+
+          <div>
+            <MdOutlineCancel
+              onClick={() => {
+                setActiveMenu((prevActiveMenu) => !prevActiveMenu);
+              }}
+              className="mt-3 cross-icon"
+            />
+          </div>
         </div>
 
         <ul className="list-style-none admin-sidebar-list ps-2">
-          <p className="mb-2 mt-5 ">Dashboard</p>
-          <li className="admin-sidebar-list-item pt-2 pb-2 me-2">
-            <NavLink className="admin-sidebar-link" to="dashboard">
-              <i
-                className="pe-2 ps-4 fa-solid fa-table-cells-large "
-                style={{ textAlign: activeMenu ? "" : "center" }}
-              ></i>
+          <p className="mb-2 mt-5 text-secondary">Dashboard</p>
+          <NavLink className="d-flex admin-sidebar-link me-1 " to="dashboard">
+            <i
+              className="pe-3 ps-4  mt-auto mb-auto fa-solid fa-table-cells-large "
+              style={{ textAlign: activeMenu ? "" : "center" }}
+            ></i>
 
-              <p
-                style={{
-                  display: activeMenu ? "inline" : "none",
-                }}
-                className=""
-              >
-                Dashboard{" "}
-              </p>
-            </NavLink>
-          </li>
-          <p className="mt-5 mb-2">Pages</p>
-          <li className="mb-4 admin-sidebar-list-item pt-2 pb-2 me-2">
-            <NavLink className=" admin-sidebar-link" to="booking">
-              <i className="pe-2 ps-4 fa-solid fa-bookmark"></i>
-              <p
-                style={{ display: activeMenu ? "inline" : "none" }}
-                className=""
-              >
-                Bookings
-              </p>
-            </NavLink>
-          </li>
-          <li className="mb-4 admin-sidebar-list-item pt-2 pb-2 me-2">
-            <NavLink className="admin-sidebar-link" to="hotels">
-              <i className="pe-2 ps-4 fa-solid fa-house"></i>{" "}
-              <p
-                style={{ display: activeMenu ? "inline" : "none" }}
-                className=""
-              >
-                Hotels
-              </p>
-            </NavLink>
-          </li>
-          <li className="mb-4 admin-sidebar-list-item pt-2 pb-2 me-2">
-            <NavLink className="admin-sidebar-link" to="customers">
-              <i className="pe-2 ps-4 fa-solid fa-user-group"></i>{" "}
-              <p
-                style={{ display: activeMenu ? "inline" : "none" }}
-                className=""
-              >
-                Customers
-              </p>
-            </NavLink>
-          </li>
+            <p
+              style={{
+                display: activeMenu ? "inline" : "none",
+              }}
+              className="mt-auto mb-auto"
+            >
+              Dashboard{" "}
+            </p>
+          </NavLink>
+
+          <p className="mt-5 mb-2 text-secondary">Pages</p>
+          <NavLink
+            className=" d-flex admin-sidebar-link me-1 mb-3"
+            to="booking"
+          >
+            <i className="pe-3 ps-4 pt-1 mt-auto mb-auto fa-solid fa-bookmark"></i>
+            <p
+              style={{ display: activeMenu ? "inline" : "none" }}
+              className="mt-auto mb-auto"
+            >
+              Bookings
+            </p>
+          </NavLink>
+
+          <NavLink className="d-flex admin-sidebar-link me-1 mb-3" to="hotels">
+            <i className="pe-3 ps-4 mt-auto mb-auto fa-solid fa-house"></i>{" "}
+            <p
+              style={{ display: activeMenu ? "inline" : "none" }}
+              className="pt-1 mt-auto mb-auto"
+            >
+              Hotels
+            </p>
+          </NavLink>
+
+          <NavLink
+            className="d-flex admin-sidebar-link me-1 mb-3"
+            to="customers"
+          >
+            <i className="pe-3 ps-4 pt-1 mt-auto mb-auto fa-solid fa-user-group"></i>{" "}
+            <p
+              style={{ display: activeMenu ? "inline" : "none" }}
+              className="mt-auto mb-auto"
+            >
+              Customers
+            </p>
+          </NavLink>
         </ul>
+
+        <Button
+          variant="danger"
+          className=" logout-button ms-2 me-5"
+          style={{ width: activeMenu ? "190px" : "0px" }}
+        >
+          <IoExitOutline className="me-2" />
+          Logout
+        </Button>
       </div>
     </div>
   );

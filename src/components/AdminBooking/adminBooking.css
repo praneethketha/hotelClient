@@ -1,4 +1,5 @@
-.admin-booking {
-  height: 100vh;
-  background-color: #f7f6f2;
+@media only screen and (max-width: 768px) {
+  .admin-booking {
+    width: 100vw !important;
+  }
 }

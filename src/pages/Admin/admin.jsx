@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import React from "react";
+
 import { Outlet } from "react-router-dom";
-import { AdminSidebar } from "../../components";
+import { AdminHeader, AdminSidebar } from "../../components";
 import "./admin.css";
 
 const Admin = () => {
@@ -11,7 +11,8 @@ const Admin = () => {
         <AdminSidebar />
       </div>
 
-      <div>
+      <div className="admin-content">
+        <AdminHeader />
         <Outlet></Outlet>
       </div>
     </div>

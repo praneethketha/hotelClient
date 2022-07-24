@@ -1,20 +1,13 @@
-.dashboard {
-  height: 100vh;
-  background-color: #f7f6f2;
-  padding-top: 5em;
-  /* width: 95vw; */
-}
-
 .dashboard-top {
-  margin: auto;
-  display: flex;
   justify-content: space-between;
-  width: 60vw;
+  margin: 0 auto !important;
+  width: 60vw !important;
 }
 
 .dashboard-top-first {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  width: 20vw;
+  width: 20vw !important;
+
   height: 15vh;
   background-color: #fff;
 }
@@ -23,7 +16,8 @@
 .dashboard-top-third,
 .dashboard-top-fourth {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  width: 10vw;
+  width: 10vw !important;
+
   background-color: #fff;
 
   height: 15vh;
@@ -32,8 +26,49 @@
 .dashboard-bottom {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: auto;
-  width: 60vw;
+  width: 60vw !important;
   background-color: #fff;
-
   height: 60vh;
+}
+
+@media only screen and (max-width: 1260px) {
+  .dashboard {
+    width: 95vw;
+  }
+
+  .dashboard-top {
+    margin-top: 2em !important;
+    width: 90vw !important;
+  }
+
+  .dashboard-top-first {
+    margin-top: 2em !important;
+    width: 150px !important;
+  }
+
+  .dashboard-top-first h1 {
+    font-size: 25px;
+    padding-left: 0 !important;
+  }
+
+  .dashboard-top-first p {
+    padding-left: 0 !important;
+  }
+  .dashboard-top-second {
+    margin-top: 2em !important;
+
+    width: 150px !important;
+  }
+
+  .dashboard-top-third,
+  .dashboard-top-fourth {
+    width: 150px !important;
+    margin-top: 2em !important;
+    margin-bottom: 4em !important;
+  }
+
+  .dashboard-bottom {
+    height: 30vh;
+    width: 90vw !important;
+  }
 }

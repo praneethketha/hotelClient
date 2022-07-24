@@ -1,41 +1,47 @@
 .admin-sidebar {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   height: 100vh;
-  /* width: 15vw; */
-  /* max-width: 15vw; */
 }
 
 .rentea-logo {
   color: #ff6d1b !important;
 }
 
-.admin-sidebar-list-item {
-  list-style: none;
-}
-
-.admin-sidebar-list-item:hover {
+.admin-sidebar-link:hover {
   background-color: #ff6d1b;
   border-radius: 5px;
+}
+
+.admin-sidebar-link.active {
+  background-color: #ff6d1b;
+  border-radius: 5px;
+  color: #fff;
 }
 
 .admin-sidebar-link {
   font-size: 18px;
   text-decoration: none;
   color: #000;
+  height: 50px;
 }
 
 .admin-sidebar-link:hover {
   color: #fff;
 }
 
-.logo {
-  width: 10px !important;
-  margin-top: auto;
+.logout-button {
+  font-size: 16px;
+
+  margin: 0 auto;
+  margin-top: 10em;
 }
 
-.toggle-button {
-  margin-top: 1em;
-  cursor: pointer;
-  width: 100px !important;
-  height: 30px !important;
+.cross-icon {
+  font-size: 25px;
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .cross-icon {
+    display: inline;
+  }
 }

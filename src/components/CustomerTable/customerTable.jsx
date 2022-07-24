@@ -4,10 +4,18 @@ import Table from "react-bootstrap/Table";
 import data from "../../data/db.json";
 import { Button, Container, Form } from "react-bootstrap";
 import Pagination from "../Pagination/pagination";
+import { useUser } from "../../store/userContext";
 
 let PageSize = 8;
 
 const CustomerTable = () => {
+  const { users, isLoading } = useUser();
+
+  const userArr = users.data;
+  // let arr = [];
+  // arr = users.data;
+  console.log(users.data);
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const currentTableData = useMemo(() => {
@@ -18,7 +26,7 @@ const CustomerTable = () => {
 
   const handleDelete = () => {};
   return (
-    <div className="customer-table-container mt-5">
+    <div className="customer-table-container mt-2">
       <Container className="pt-4">
         <div>
           <p>Page</p>
@@ -50,31 +58,31 @@ const CustomerTable = () => {
             </tr>
           </thead>
           <tbody>
-            {currentTableData.map((item) => {
+            {userArr.map((item) => {
               return (
                 <tr className="text-center text-capitalize ps-0">
                   <td>
                     <Form.Check aria-label="option 1" value={item} />
                   </td>
 
-                  <td>{item.hotel_name}</td>
-                  <td>{item.base_price}</td>
-                  <td>{item.rating}</td>
-                  <td>{item.reviews}</td>
-                  <td>{item.rooms}</td>
-                  <td>{item.location}</td>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.booking}</td>
+                  <td>{item.role}</td>
+                  <td>{item.status}</td>
+                  <td>{item.contact_number}</td>
                 </tr>
               );
             })}
           </tbody>
         </Table>
-        <Pagination
+        {/* <Pagination
           className="pagination-bar"
           currentPage={currentPage}
           totalCount={data.length}
           pageSize={PageSize}
           onPageChange={(page) => setCurrentPage(page)}
-        />
+        /> */}
       </Container>
       <div></div>
     </div>

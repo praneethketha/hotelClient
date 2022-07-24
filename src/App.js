@@ -15,7 +15,7 @@ import AdminDashboard from "./components/AdminDashboard/adminDashboard";
 function App() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="hotels" element={<Hotels />} />
@@ -35,7 +35,7 @@ function App() {
           <Route path="customers" element={<AdminCustomers />}></Route>
         </Route>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

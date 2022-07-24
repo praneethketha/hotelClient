@@ -8,6 +8,8 @@ import AuthProvider from "./store/authContext";
 import { BrowserRouter } from "react-router-dom";
 import HotelProvider from "./store/hotelContext";
 import { AdminContextProvider } from "./store/adminContext";
+import UserProvider from "./store/userContext";
+import BookingProvider from "./store/bookingContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,7 +18,11 @@ root.render(
       <HotelProvider>
         <AuthProvider>
           <AdminContextProvider>
-            <App />
+            <UserProvider>
+              <BookingProvider>
+                <App />
+              </BookingProvider>
+            </UserProvider>
           </AdminContextProvider>
         </AuthProvider>
       </HotelProvider>
