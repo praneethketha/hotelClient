@@ -18,7 +18,7 @@ const Edit = () => {
       </div>
       <div className="text-center">
         <img
-          src={currentUser.photo}
+          src={profile}
           alt="profile"
           className="profile-img mt-3"
           width="20%"

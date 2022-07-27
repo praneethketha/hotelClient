@@ -36,7 +36,7 @@
   transition: transform 80ms ease-in;
 }
 
-.login-form button i{
+.login-form button i {
   font-size: 15px;
 }
 
@@ -74,6 +74,7 @@
   flex-direction: column;
   padding: 0 50px;
   height: 100%;
+
   text-align: center;
 }
 .para {
@@ -117,15 +118,15 @@
 .container1 {
   background-color: #fff;
   border-radius: 0.375rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   width: 90vw;
-  max-width: 1000px !important; 
+  max-width: 1000px !important;
   min-height: 480px;
 }
 
-.loginPage{
+.loginPage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -249,7 +250,7 @@
   transform: translateX(100%);
 }
 
-.loginforgot:hover{
+.loginforgot:hover {
   color: #ff6d1b;
   border-bottom: 1px solid #ff6d1b;
 }
@@ -274,17 +275,27 @@
   .overlay {
     background: none;
   }
-  .overlay {
+  .overlay-container {
     display: none !important;
+    width: 0px !important;
   }
   .container1 {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  .sign-in-container {
+    width: 100%;
+  }
+  .sign-up-container {
+    width: 100%;
+  }
+  .container1.right-panel-active .sign-up-container {
+    transform: translateX(0%);
+  }
 }
 
-.fieldError{
+.fieldError {
   color: #e53c4f;
   margin: 0;
   padding: 0;

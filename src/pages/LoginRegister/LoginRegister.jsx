@@ -28,7 +28,7 @@ const LoginRegister = () => {
             <p className="para">Welcome Back!!</p>
             <input type="email" name="email" placeholder="Email" />
             <input type="password" name="password" placeholder="Password" />
-            <Link to="/forgot-password" className="loginforgot">
+            <Link to="/forgot-password" className="loginforgot ">
               Forgot Password?
             </Link>
             <button className="signin" type="submit">

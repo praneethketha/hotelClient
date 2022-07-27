@@ -4,7 +4,6 @@ const URL = "http://localhost:8000/api/v1";
 
 export const fetchAllHotels = (searchTerm) =>
   axios.get(`${URL}/hotels?key=${searchTerm}`);
-// axios.get(`${URL}/hotels`).then((res) => res.data);
 export const signup = (data) => axios.post(`${URL}/users/signup`, data);
 export const login = (data) => axios.post(`${URL}/users/login`, data);
 export const verifyOTP = (data) => axios.patch(`${URL}/users/verifyOTP`, data);

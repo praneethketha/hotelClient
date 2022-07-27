@@ -19,13 +19,13 @@ const Hotels = () => {
                 <Form.Control
                   type="text"
                   placeholder="search for cities and hotel names"
-                  className="searchfield py-3 px-4"
+                  className="searchfield py-3 px-3"
                   onKeyUp={(e) => handleSearch(e.target.value)}
                 />
               </Form.Group>
             </div>
-            <div className="btn1">
-              <Button variant="success" className="btn1">
+            <div className="btn1 me-2">
+              <Button variant="success" className="btn1 ">
                 {" "}
                 <IoFunnelOutline /> Filter
               </Button>
