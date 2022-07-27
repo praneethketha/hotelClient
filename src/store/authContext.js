@@ -3,98 +3,145 @@ import * as api from "./../services";
 import cookie from "react-cookies";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 const AuthContext = React.createContext();
 
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
+const NEW_USER = {
+  name: "",
+  email: "",
+  passwordCurrent: "",
+  password: "",
+  passwordConfirm: "",
+  contact_number: "",
+  otp: "",
+  photo: "",
+  role: "user",
+};
+
+const CREDENTIALS = {
+  email: "",
+  password: "",
+};
+
 const AuthProvider = ({ children }) => {
-  const [newUser, setNewUser] = useState({
-    name: "",
-    email: "",
-    passwordCurrent: "",
-    password: "",
-    passwordConfirm: "",
-    contact_number: "",
-    otp: "",
-  });
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
+  const [newUser, setNewUser] = useState(NEW_USER);
+  const [credentials, setCredentials] = useState(CREDENTIALS);
   const [config, setConfig] = useState({});
   const [errors, setErrors] = useState({});
   const [error, setError] = useState("");
-  const [changeText, setChangeText] = useState(0);
+  const [requesting, setRequesting] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [addclass, setaddclass] = useState("");
+  const [userId, setUserId] = useState("");
 
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
-    e.preventDefault();
+    beforeSubmit(e);
     try {
-      setChangeText(1);
       const { data } = await api.signup(newUser);
 
       setCurrentUser({ userId: data.data.userId });
-      setChangeText(2);
+      navigate("auth/verifyOTP");
+
+      resetNewUser();
     } catch (err) {
-      setChangeText(0);
-      setErrors(JSON.parse(err.response.data.message));
+      handleError(err);
     }
+    setRequesting(false);
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    beforeSubmit(e);
+
     try {
-      setChangeText(1);
       const { data } = await api.login(credentials);
 
-      setChangeText(0);
-      saveCurrentUser(data);
-    } catch (error) {
-      console.log(error.response);
+      if (data.status === "pending") {
+        setCredentials(CREDENTIALS);
+        setCurrentUser({ userId: data.data.userId });
+        navigate("auth/verifyOTP");
+
+        return setRequesting(false);
+      }
+
+      saveCurrentUser(data, "/");
+      setCredentials(CREDENTIALS);
+    } catch (err) {
+      handleError(err);
     }
+    setRequesting(false);
   };
 
   const handleVerify = async (e) => {
-    e.preventDefault();
+    beforeSubmit(e);
+
     try {
       const { data } = await api.verifyOTP({
         user_id: currentUser.userId,
         otp: newUser.otp,
       });
 
-      saveCurrentUser(data);
+      saveCurrentUser(data, "/");
+      resetNewUser();
     } catch (error) {
       setErrors({ otp: error.response.data.message });
     }
+    setRequesting(false);
   };
 
   const handleChangePassword = async (e) => {
-    e.preventDefault();
-    resetErrors();
+    beforeSubmit(e);
     try {
       const { data } = await api.changePassword(config, newUser);
-      saveCurrentUser(data);
-    } catch (error) {
-      const errMsg = error.response.data.message;
-      if (errMsg[0] === "{") {
-        setErrors(JSON.parse(error.response.data.message));
-      } else {
-        setError(error.response.data.message);
-      }
+      saveCurrentUser(data, -1);
+      resetNewUser();
+    } catch (err) {
+      handleError(err);
     }
+    setRequesting(false);
   };
 
-  const loginChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  const handleForgotPassword = async (e) => {
+    beforeSubmit(e);
+    try {
+      await api.forgotPassword({ email: newUser.email });
+      setRequesting("done");
+    } catch (err) {
+      handleError(err);
+    }
+    setRequesting(false);
   };
 
-  const signupChange = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  const handleResetPassword = async (e, token) => {
+    beforeSubmit(e);
+    try {
+      const { data } = await api.resetPassword(newUser, token);
+      saveCurrentUser(data, "/");
+      resetNewUser();
+    } catch (err) {
+      handleError(err);
+    }
+    setRequesting(false);
+  };
+
+  const handleDeactivate = async (e) => {
+    beforeSubmit(e);
+    try {
+      await api.updateMe(config, { active: false });
+
+      handleLogOut();
+    } catch (err) {
+      handleError(err);
+    }
+    setRequesting(false);
+  };
+
+  const handleChange = (e, fn) => {
+    fn((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
 
   const getUser = async () => {
@@ -108,18 +155,20 @@ const AuthProvider = ({ children }) => {
   };
 
   const handleEdit = async (e) => {
-    e.preventDefault();
+    beforeSubmit(e);
     try {
       const { data } = await api.updateMe(config, newUser);
 
       setCurrentUser(data.data);
       navigate(-1);
-    } catch (error) {
-      alert(error.response.data.message);
+      resetNewUser();
+    } catch (err) {
+      handleError(err);
     }
+    setRequesting(false);
   };
 
-  const saveCurrentUser = (data) => {
+  const saveCurrentUser = (data, path, replace) => {
     cookie.save("token", data.token, {
       expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     });
@@ -129,18 +178,61 @@ const AuthProvider = ({ children }) => {
     });
 
     setCurrentUser(data.data);
-    navigate(-1);
+
+    setConfig({
+      headers: {
+        authorization: `Bearer ${data.token}`,
+      },
+    });
+
+    setUserId(data.data._id);
+
+    if (replace) {
+      navigate(path, { replace: replace });
+    } else {
+      navigate(path);
+    }
   };
 
   const handleLogOut = () => {
     cookie.remove("userId");
     cookie.remove("token");
+
+    setConfig({
+      headers: {
+        authorization: `Bearer `,
+      },
+    });
+
+    setUserId(() => "");
     setCurrentUser(() => {});
+
+    navigate("/");
+  };
+
+  const beforeSubmit = (e) => {
+    e.preventDefault();
+    resetErrors();
+    setRequesting(true);
+  };
+
+  const handleError = (err) => {
+    const errMsg = err.response.data.message;
+    if (errMsg[0] === "{") {
+      setErrors(JSON.parse(errMsg));
+    } else {
+      setError(errMsg);
+    }
   };
 
   const resetErrors = () => {
     setError("");
     setErrors({});
+  };
+
+  const resetNewUser = () => {
+    console.log("reset new user");
+    setNewUser(NEW_USER);
   };
 
   useEffect(() => {
@@ -152,10 +244,12 @@ const AuthProvider = ({ children }) => {
       },
     });
 
+    setUserId(cookie.load("userId"));
+
     if (cookie.load("userId")) {
       getUser();
     }
-  }, [currentUser]);
+  }, [userId]);
 
   return (
     <AuthContext.Provider
@@ -165,16 +259,27 @@ const AuthProvider = ({ children }) => {
         currentUser,
         errors,
         error,
+        userId,
         credentials,
-        changeText,
-        loginChange,
-        signupChange,
+        requesting,
+        addclass,
+        resetNewUser,
+        setRequesting,
+        setNewUser,
+        setaddclass,
+        setCredentials,
+        beforeSubmit,
+        handleChange,
         handleLogin,
         handleSignUp,
         handleVerify,
         handleEdit,
         handleLogOut,
+        handleError,
         handleChangePassword,
+        handleForgotPassword,
+        handleResetPassword,
+        handleDeactivate,
       }}
     >
       {children}

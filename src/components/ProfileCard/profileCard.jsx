@@ -1,7 +1,7 @@
 import React from "react";
 import "./profileCard.css";
-import profile from "../../assets/tom.jpg";
 import { useAuth } from "../../store/authContext";
+import defaultProfile from "./../../assets/default.jpg";
 
 const ProfileCard = () => {
   const { currentUser } = useAuth();
@@ -9,7 +9,7 @@ const ProfileCard = () => {
     <div className="profile-card">
       <div>
         <img
-          src={currentUser.photo}
+          src={currentUser.photo || defaultProfile}
           className="profile-img"
           alt="profile-img"
         />

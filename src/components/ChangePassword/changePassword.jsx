@@ -5,7 +5,14 @@ import { useAuth } from "../../store/authContext";
 import "./changePassword.css";
 
 const ChangePasword = () => {
-  const { error, errors, handleChangePassword, signupChange } = useAuth();
+  const {
+    error,
+    errors,
+    requesting,
+    handleChangePassword,
+    handleChange,
+    setNewUser,
+  } = useAuth();
   return (
     <div>
       <div className="text-center mb-5 pt-5">
@@ -14,7 +21,10 @@ const ChangePasword = () => {
         </NavLink>
       </div>
       <div className="form mt-5">
-        <Form onSubmit={handleChangePassword} onChange={signupChange}>
+        <Form
+          onSubmit={handleChangePassword}
+          onChange={(e) => handleChange(e, setNewUser)}
+        >
           <Form.Group>
             <Form.Label className="mb-1">Old Password</Form.Label>
             <Form.Control type="password" name="passwordCurrent" />
@@ -35,7 +45,7 @@ const ChangePasword = () => {
           </p>
 
           <button className="edit-button mt-4" type="submit">
-            Submit
+            {requesting ? <i className="fa fa-spinner fa-spin"></i> : "Submit"}
           </button>
         </Form>
       </div>

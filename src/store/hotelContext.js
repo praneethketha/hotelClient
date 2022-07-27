@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
 import * as api from "./../services";
-import cookie from "react-cookies";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
+import { useReserve } from "./reserveContext";
 
 const HotelContext = React.createContext();
 
@@ -16,17 +15,37 @@ const HotelProvider = ({ children }) => {
   const [currentHotel, setCurrentHotel] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [priceRange, setPriceRange] = useState([5000, 10000]);
+  const [value, setValue] = useState([]);
+  const [cities, setCities] = useState([]);
 
-  const getAllHotels = useCallback(async () => {
+  const { rating } = useReserve();
+
+  const getAllHotels = useCallback(
+    async (queryStr) => {
+      try {
+        const query = queryStr || "";
+        setIsLoading(true);
+        const { data } = await api.fetchAllHotels(searchTerm, query);
+        setHotels(data.data);
+      } catch (error) {
+        alert(error);
+      }
+      setIsLoading(false);
+    },
+    [searchTerm]
+  );
+
+  const getHotel = async (id) => {
     try {
       setIsLoading(true);
-      const { data } = await api.fetchAllHotels(searchTerm);
-      setHotels(data.data);
+      const { data } = await api.fetchHotel(id);
+      setCurrentHotel(data.data);
     } catch (error) {
       alert(error);
     }
     setIsLoading(false);
-  }, [searchTerm]);
+  };
 
   const createSearchTerm = (value) => {
     setSearchTerm(value);
@@ -47,6 +66,34 @@ const HotelProvider = ({ children }) => {
 
   const handleSearch = doSomeMagic(createSearchTerm, 300);
 
+  const filterChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const getHotelsByFilters = (e) => {
+    e.preventDefault();
+    getAllHotels(
+      `&rating[gte]=${rating}&basePrice[gte]=${priceRange[0]}&basePrice[lte]=${priceRange[1]}`
+    );
+  };
+
+  const getInitialStats = async () => {
+    try {
+      const cities = await api.fetchCities();
+      const citiesData = await cities.data;
+      setCities(citiesData.data);
+
+      const { data } = await api.fetchPriceRange();
+      setValue([data.data.low, data.data.high]);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  useEffect(() => {
+    getInitialStats();
+  }, []);
+
   useEffect(() => {
     getAllHotels();
   }, [getAllHotels]);
@@ -57,9 +104,19 @@ const HotelProvider = ({ children }) => {
         hotels,
         currentHotel,
         isLoading,
+        priceRange,
+        value,
+        searchTerm,
+        cities,
+        setValue,
+        setPriceRange,
+        filterChange,
         createSearchTerm,
         setSearchTerm,
         handleSearch,
+        getHotel,
+        getAllHotels,
+        getHotelsByFilters,
       }}
     >
       {children}

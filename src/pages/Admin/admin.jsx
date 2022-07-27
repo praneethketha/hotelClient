@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { Row, Col } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
+import AdminSidebar from "../../components/AdminSidebar/adminSidebar";
+import AdminHeader from "../../components/AdminHeader/adminHeader";
+import "./admin.css";
 
 const Admin = () => {
-  return <div>Admin</div>;
+  return (
+    <div className="admin d-flex">
+      <div>
+        <AdminSidebar />
+      </div>
+
+      <div>
+        <AdminHeader />
+        <Outlet></Outlet>
+      </div>
+    </div>
+  );
 };
 
 export default Admin;

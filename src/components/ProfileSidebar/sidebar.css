@@ -7,22 +7,22 @@
   color: #fff;
 }
 
-.sidebar-list-item.active{
+.sidebar-list-item.active {
   background-color: #000;
-  color: #ff6d1b
+  color: #ff6d1b;
 }
 
-.sidebar-list-item.deactivate:hover{
+.sidebar-list-item.deactivate:hover {
   background-color: #e53c4f;
 }
 
-.profile-link.active{
+.profile-link.active {
   background: #ff6d1b;
   color: #fff;
 }
 
 .sidebar-list-item {
-  padding: 1.5em 1em;
+  padding: 1rem;
   border-bottom: 0.5px solid #fff;
   text-decoration: none;
   color: #fff;
@@ -32,6 +32,39 @@
   display: block;
 }
 
+.sidebar-heading {
+  display: inline-block;
+}
+
+.sidebar-icon {
+  padding-top: 1em;
+}
+
 .deactivate {
   background-color: #eb1d36;
+  cursor: pointer;
+}
+
+.dContainer {
+  color: #eb1d36;
+}
+
+.dButton {
+  background: #eb1d36 !important;
+  width: max-content !important;
+}
+
+@media only screen and (max-width: 1000px) {
+  .sidebar-heading {
+    display: none !important;
+  }
+
+  .sidebar-icon {
+    padding-top: 0;
+  }
+  .sidebar-list-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center;
+  }
 }

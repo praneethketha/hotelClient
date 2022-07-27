@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const HotelCard = ({ hotel }) => {
   const navigate = useNavigate();
   return (
-    <div key={hotel._id} onClick={() => navigate(`hotels/${hotel._id}`)}>
+    <div key={hotel._id} onClick={() => navigate(`${hotel._id}`)}>
       <Card>
         <div className="Hotels">
           <Card.Img variant="top" className="card_img" src={hotel.cover_pic} />
@@ -19,8 +19,8 @@ const HotelCard = ({ hotel }) => {
           <Card.Text className="text">{hotel.location.address}</Card.Text>
           <div className="ratecost">
             <div className="ratings">
-              <span className="rate">{hotel.rating}/5 </span>
-              <span className="rate2">10 ratings</span>
+              <span className="rate">{hotel.rating.toFixed(1)}/5 </span>
+              <span className="rate2">{hotel.ratingsQuantity} ratings</span>
             </div>
             <div className="cost">
               <span className="number">

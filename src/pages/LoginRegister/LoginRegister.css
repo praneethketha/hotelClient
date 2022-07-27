@@ -36,7 +36,7 @@
   transition: transform 80ms ease-in;
 }
 
-.login-form button i{
+.login-form button i {
   font-size: 15px;
 }
 
@@ -62,7 +62,7 @@
   font-weight: 400;
   background-color: transparent;
   border-color: #000000;
-  color: #ff6d1b;
+  color: #ff6d1b !important;
   cursor: pointer;
 }
 
@@ -117,15 +117,15 @@
 .container1 {
   background-color: #fff;
   border-radius: 0.375rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   width: 90vw;
-  max-width: 1000px !important; 
-  min-height: 480px;
+  max-width: 1000px !important;
+  min-height: 70vh;
 }
 
-.loginPage{
+.loginPage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,12 +155,11 @@
   letter-spacing: 2px;
 }
 .brand {
-  color: #ff6d1b;
-  font-size: 32px;
+  color: #ff6d1b !important;
+  font-size: 2.3rem !important;
+  letter-spacing: 3px;
   font-weight: bold;
-  font-family: "Bungee Inline", cursive;
-  font-family: "Courgette", cursive;
-  font-family: "Fredoka", sans-serif;
+  font-family: "Great Vibes";
 }
 .sign-up-container {
   left: 0;
@@ -249,7 +248,7 @@
   transform: translateX(100%);
 }
 
-.loginforgot:hover{
+.loginforgot:hover {
   color: #ff6d1b;
   border-bottom: 1px solid #ff6d1b;
 }
@@ -284,7 +283,7 @@
   }
 }
 
-.fieldError{
+.fieldError {
   color: #e53c4f;
   margin: 0;
   padding: 0;

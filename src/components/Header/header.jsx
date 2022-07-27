@@ -4,65 +4,82 @@ import "./header.css";
 import logo from "./../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../store/authContext";
-import cookie from "react-cookies";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 const Header = () => {
-  const { handleLogOut } = useAuth();
+  const { userId, handleLogOut, currentUser } = useAuth();
 
   const navigate = useNavigate();
 
   const handleBookNow = () => {
-    if (cookie.load("token")) {
-      navigate("hotels");
+    if (userId) {
+      navigate("/hotels", { state: "default" });
     } else {
-      navigate("login");
+      navigate("/auth");
     }
   };
 
   return (
-    <header className="header py-2 bg-dark text-white fixed-top">
-      <div className="d-flex align-items-center w-85 mx-auto justify-content-between">
-        <section>
+    <div>
+      {/* // <header className="header py-1 bg-dark text-white fixed-top"> */}
+      {/* <div className="d-flex align-items-center w-85 mx-auto justify-content-between"> */}
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div className="container">
           <NavLink to="/" className="nav-link logo">
             <img src={logo} alt="logo" />
             Rentea
           </NavLink>
-        </section>
-        <section className="d-flex justify-content-center align-items-center">
-          <ul className="nav col-12 col-lg-auto ml-lg-auto justify-content-space-between ">
-            <li>
-              <NavLink to="hotels" className="nav-link mx-2 text-white">
-                Hotels
-              </NavLink>
+          <button
+            class="navbar-toggler text-white"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <HiOutlineMenuAlt3 fontSize={"26px"} />
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav"></div>
+            <li
+              onClick={() => navigate("/hotels", { state: "default" })}
+              className="nav-link mx-2 text-white"
+              style={{ cursor: "pointer" }}
+            >
+              Hotels
             </li>
-            {cookie.load("token") && (
-              <li>
-                <NavLink to="/profile" className="nav-link mx-2 text-white">
-                  Profile
-                </NavLink>
-              </li>
+            {currentUser && currentUser.role === "admin" && (
+              <NavLink to="/admin" className="nav-link mx-2 text-white">
+                Admin
+              </NavLink>
             )}
-          </ul>
-          {cookie.load("token") ? (
-            <button
-              onClick={handleLogOut}
-              type="button"
-              className="btn btn-outline-light ms-3 book-now"
-            >
-              Log Out
-            </button>
-          ) : (
-            <button
-              onClick={handleBookNow}
-              type="button"
-              className="btn btn-outline-light ms-3 book-now"
-            >
-              Book Now
-            </button>
-          )}
-        </section>
-      </div>
-    </header>
+            {userId && (
+              <NavLink to="/profile" className="nav-link mx-2 text-white">
+                Profile
+              </NavLink>
+            )}
+            {userId ? (
+              <button
+                onClick={handleLogOut}
+                type="button"
+                className="btn btn-outline-light ms-3 book-now"
+              >
+                Log Out
+              </button>
+            ) : (
+              <button
+                onClick={handleBookNow}
+                type="button"
+                className="btn btn-outline-light ms-3 book-now"
+              >
+                Book Now
+              </button>
+            )}
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 };
 

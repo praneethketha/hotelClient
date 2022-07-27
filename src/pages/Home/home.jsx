@@ -1,11 +1,13 @@
 import React from "react";
-import { Hero, Popular } from "./../../components";
+import { Footer, Header, Hero, Popular } from "./../../components";
 
 const Home = () => {
   return (
     <div>
+      <Header />
       <Hero />
       <Popular />
+      <Footer />
     </div>
   );
 };

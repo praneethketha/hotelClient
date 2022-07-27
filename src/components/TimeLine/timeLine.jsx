@@ -1,10 +1,12 @@
 import React from "react";
-
-import Chat from "./chat";
-import "./timeline.css";
+import TimelineCard from "../TimelineCard/timelineCard";
 
 const TimeLine = () => {
-  return <div>Timeline</div>;
+  return (
+    <div>
+      <TimelineCard />
+    </div>
+  );
 };
 
 export default TimeLine;

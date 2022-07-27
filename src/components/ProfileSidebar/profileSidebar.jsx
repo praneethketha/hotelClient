@@ -1,33 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Deactivate from "../Deactivate/deactivate";
 import "./sidebar.css";
 
 const ProfileSidebar = () => {
+  const [open, setOpen] = useState(false);
   return (
     <div>
       <ul className="sidebar-list">
         <NavLink className="sidebar-list-item profile-link" to="">
-          <i className="fa-solid fa-circle-user pe-2 ps-2"></i>
-          Profile
+          <i className="sidebar-icon fa-solid fa-circle-user  pe-2 ps-2"></i>
+          <p className="sidebar-heading">Profile</p>
         </NavLink>
         <NavLink className="sidebar-list-item" to="timeline">
-          <i className="fa-solid fa-clock pe-2 ps-2"></i>
-          TimeLine
+          <i className="sidebar-icon fa-solid fa-clock  pe-2 ps-2"></i>
+          <p className="sidebar-heading"> TimeLine</p>
         </NavLink>
         <NavLink className="sidebar-list-item" to="edit">
-          <i className="fa-solid fa-pen-to-square pe-2 ps-2"></i>
-          Edit-Profile
+          <i className="sidebar-icon fa-solid fa-pen-to-square  pe-2 ps-2"></i>
+          <p className="sidebar-heading">Edit-Profile</p>
         </NavLink>
         <NavLink className="sidebar-list-item" to="change-password">
-          <i className="fa-solid fa-key pe-2 ps-2"></i>
-          Change Password
+          <i className="sidebar-icon fa-solid fa-key  pe-2 ps-2"></i>
+          <p className="sidebar-heading">Change Password</p>
         </NavLink>
-        <NavLink className="sidebar-list-item  deactivate" to="deactivate">
-          <i className="fa-solid fa-circle-xmark pe-2 ps-2"></i>
-          Deactivate
-        </NavLink>
+        <li
+          className="sidebar-list-item  deactivate"
+          onClick={() => setOpen(true)}
+        >
+          <i className="sidebar-icon fa-solid fa-circle-xmark  pe-2 ps-2"></i>
+          <p className="sidebar-heading">Deactivate</p>
+        </li>
       </ul>
+      {open && <Deactivate setOpen={setOpen} />}
     </div>
   );
 };
