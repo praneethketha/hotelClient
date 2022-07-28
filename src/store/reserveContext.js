@@ -48,8 +48,6 @@ const ReserveProvider = ({ children }) => {
     return dates;
   };
 
-  // const alldates = getDatesInRange(range[0].startDate, range[0].endDate);
-
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) =>
       alldates.includes(new Date(date).getTime())
@@ -162,6 +160,7 @@ const ReserveProvider = ({ children }) => {
         selectedRooms,
         grandTotal,
         setRange,
+        setSelectedRooms,
         setRating,
         reviewChange,
         isAvailable,

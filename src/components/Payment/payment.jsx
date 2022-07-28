@@ -10,6 +10,7 @@ const Payment = () => {
   const { currentHotel } = useHotel();
   const {
     selectedRooms,
+    setSelectedRooms,
     grandTotal,
     range,
     alldates,
@@ -80,7 +81,13 @@ const Payment = () => {
       </div>
 
       <div className="rButtons">
-        <button className="rButton2" onClick={() => navigate(-1)}>
+        <button
+          className="rButton2"
+          onClick={() => {
+            setSelectedRooms(() => []);
+            navigate(-1);
+          }}
+        >
           Back
         </button>
         <button

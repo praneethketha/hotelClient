@@ -11,6 +11,10 @@
   position: relative;
 }
 
+.text-none{
+  text-transform: none !important;
+}
+
 .hotel-img {
   width: 100px;
   aspect-ratio: 1/1;
@@ -26,6 +30,14 @@
 
 .addAdmin label {
   font-size: 0.8rem;
+}
+
+.editHotel{
+  color: #00a7cd;
+}
+
+.delHotel{
+  color: #eb1d36;
 }
 
 .addImage {

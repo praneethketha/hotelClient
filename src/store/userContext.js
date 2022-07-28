@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import * as api from "../services";
-import cookie from "react-cookies";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCallback } from "react";
@@ -22,7 +21,7 @@ const UserProvider = ({ children }) => {
     handleError,
   } = useAuth();
   const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const getAllUsers = useCallback(async () => {
     try {
@@ -40,12 +39,36 @@ const UserProvider = ({ children }) => {
     beforeSubmit(e);
     try {
       await api.createUser(newUser);
+      navigate(-1);
       getAllUsers();
       resetNewUser();
     } catch (err) {
       handleError(err);
     }
     setRequesting(false);
+  };
+
+  const editUser = async (e) => {
+    beforeSubmit(e);
+    try {
+      await api.updateUser(newUser, newUser._id);
+      navigate(-1);
+      getAllUsers();
+      resetNewUser();
+    } catch (err) {
+      handleError(err);
+    }
+    setRequesting(false);
+  };
+
+  const deactivateUser = async (id, data) => {
+    console.log(data);
+    try {
+      await api.updateUser({ active: data }, id);
+      getAllUsers();
+    } catch (err) {
+      handleError(err);
+    }
   };
 
   useEffect(() => {
@@ -56,8 +79,9 @@ const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         users,
-        isLoading,
         addNewUser,
+        editUser,
+        deactivateUser,
       }}
     >
       {children}

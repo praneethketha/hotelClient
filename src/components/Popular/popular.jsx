@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Grid from "../Grid/grid";
 
 import goa from "../../assets/goa.jpg";

@@ -3,27 +3,11 @@ import * as api from "./../services";
 import cookie from "react-cookies";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { CREDENTIALS, NEW_USER } from "./constants";
 const AuthContext = React.createContext();
 
 export const useAuth = () => {
   return useContext(AuthContext);
-};
-
-const NEW_USER = {
-  name: "",
-  email: "",
-  passwordCurrent: "",
-  password: "",
-  passwordConfirm: "",
-  contact_number: "",
-  otp: "",
-  photo: "",
-  role: "user",
-};
-
-const CREDENTIALS = {
-  email: "",
-  password: "",
 };
 
 const AuthProvider = ({ children }) => {
@@ -34,7 +18,6 @@ const AuthProvider = ({ children }) => {
   const [error, setError] = useState("");
   const [requesting, setRequesting] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [addclass, setaddclass] = useState("");
   const [userId, setUserId] = useState("");
 
   const navigate = useNavigate();
@@ -260,13 +243,11 @@ const AuthProvider = ({ children }) => {
         errors,
         error,
         userId,
-        credentials,
         requesting,
-        addclass,
+        resetErrors,
         resetNewUser,
         setRequesting,
         setNewUser,
-        setaddclass,
         setCredentials,
         beforeSubmit,
         handleChange,

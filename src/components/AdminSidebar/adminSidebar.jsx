@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { IoExitOutline } from "react-icons/io5";
-import { MdOutlineCancel } from "react-icons/md";
 
 import { NavLink } from "react-router-dom";
 import { useAdminContext } from "../../store/adminContext";
@@ -9,7 +8,7 @@ import { useAuth } from "../../store/authContext";
 import "./adminSidebar.css";
 
 const AdminSidebar = () => {
-  const { activeMenu, setActiveMenu } = useAdminContext();
+  const { activeMenu } = useAdminContext();
   const { handleLogOut } = useAuth();
 
   return (

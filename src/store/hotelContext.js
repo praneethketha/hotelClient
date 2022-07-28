@@ -36,11 +36,22 @@ const HotelProvider = ({ children }) => {
     [searchTerm]
   );
 
-  const getHotel = async (id) => {
+  const getHotel = async (id, setTo, edit) => {
     try {
+      console.log("inside get hotel");
       setIsLoading(true);
       const { data } = await api.fetchHotel(id);
-      setCurrentHotel(data.data);
+      const hotel = data.data;
+      if (edit) {
+        setTo({
+          ...hotel,
+          images: [...hotel.images, hotel.cover_pic],
+          latitude: hotel.location.coordinates[0],
+          longitude: hotel.location.coordinates[1],
+        });
+      } else {
+        setTo(hotel);
+      }
     } catch (error) {
       alert(error);
     }
@@ -108,6 +119,7 @@ const HotelProvider = ({ children }) => {
         value,
         searchTerm,
         cities,
+        setCurrentHotel,
         setValue,
         setPriceRange,
         filterChange,

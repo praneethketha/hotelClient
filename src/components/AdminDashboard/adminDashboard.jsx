@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import { useAdminContext } from "../../store/adminContext";
 import { useBooking } from "../../store/bookingContext";
 import { useUser } from "../../store/userContext";

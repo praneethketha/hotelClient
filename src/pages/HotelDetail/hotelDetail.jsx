@@ -15,29 +15,29 @@ import Map from "../../components/Map/map";
 import { useState } from "react";
 import { useAuth } from "../../store/authContext";
 import { Footer, Header } from "../../components";
+
 const HotelDetail = () => {
   const [open, setOpen] = useState(false);
-  const { userId } = useAuth();
-  const { isLoading, getHotel, currentHotel } = useHotel();
+  const { userId, currentUser } = useAuth();
+  const { isLoading, getHotel, currentHotel, setCurrentHotel } = useHotel();
   const { id } = useParams();
 
   const navigate = useNavigate();
   const handleReserve = () => {
     if (userId) {
-      navigate("/reserve");
+      navigate(`/reserve/${currentHotel._id}`);
     } else {
       navigate("/auth");
     }
   };
 
   useEffect(() => {
-    getHotel(id);
+    getHotel(id, setCurrentHotel, false);
   }, []);
 
   return (
     <>
-      {" "}
-      <Header />{" "}
+      <Header />
       {isLoading ? (
         <Loading />
       ) : (
@@ -71,14 +71,23 @@ const HotelDetail = () => {
               </div>
             </div>
 
-            <div className="hotelheaderright">
-              <Button variant="dark me-2" onClick={() => setOpen(true)}>
-                Rate Now
-              </Button>
-              <Button variant="dark" onClick={handleReserve}>
-                Reserve Now
-              </Button>
-            </div>
+            {currentUser && currentUser.role === "admin" ? (
+              <div
+                className="hotelheaderright"
+                onClick={() => navigate(`/reviews/${currentHotel._id}`)}
+              >
+                <Button variant="dark">Reviews</Button>
+              </div>
+            ) : (
+              <div className="hotelheaderright">
+                <Button variant="dark me-2" onClick={() => setOpen(true)}>
+                  Rate Now
+                </Button>
+                <Button variant="dark" onClick={handleReserve}>
+                  Reserve Now
+                </Button>
+              </div>
+            )}
           </div>
 
           <div className="hotelpics">
@@ -147,11 +156,13 @@ const HotelDetail = () => {
                 </Carousel.Item>
               ))}
           </Carousel>
-          <div className="reservebutton">
-            <Button variant="dark" onClick={handleReserve}>
-              Reserve Now
-            </Button>
-          </div>
+          {(currentUser && currentUser.role === "admin") || (
+            <div className="reservebutton">
+              <Button variant="dark" onClick={handleReserve}>
+                Reserve Now
+              </Button>
+            </div>
+          )}
           {open && <Review setOpen={setOpen} />}
         </div>
       )}

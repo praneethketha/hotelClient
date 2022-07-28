@@ -43,3 +43,9 @@ export const fetchBookingStats = () =>
 export const createUser = (data) => axios.post(`${URL}/users`, data);
 export const createHotel = (data) => axios.post(`${URL}/hotels`, data);
 export const createRoom = (data) => axios.post(`${URL}/rooms`, data);
+export const updateUser = (data, id) => axios.patch(`${URL}/users/${id}`, data);
+export const updateHotel = (data, id) =>
+  axios.patch(`${URL}/hotels/${id}`, data);
+export const updateRoom = (data, id) => axios.patch(`${URL}/rooms/${id}`, data);
+export const deleteRoom = (id) => axios.delete(`${URL}/rooms/${id}`);
+export const deleteHotel = (id) => axios.delete(`${URL}/hotels/${id}`);

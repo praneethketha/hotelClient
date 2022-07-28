@@ -2,9 +2,9 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "./../../store/authContext";
 
 const RequireAuth = ({ children }) => {
-  const { userId } = useAuth();
+  const { currentUser } = useAuth();
 
-  if (!userId) {
+  if (!currentUser) {
     return <Navigate to="/auth" />;
   }
 

@@ -1,8 +1,6 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import { IoCloseCircle } from "react-icons/io5";
-import defaultProfile from "../../assets/default.jpg";
-import { MdEdit } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAdminContext } from "../../store/adminContext";
 import { useHotel } from "../../store/hotelContext";
@@ -10,20 +8,27 @@ import { useAuth } from "../../store/authContext";
 
 const AddRoom = () => {
   const navigate = useNavigate();
-  const { handleRoom, newRoom, addNewRoom } = useAdminContext();
+  const { getAllHotels } = useHotel();
+  const { handleRoom, newRoom, addNewRoom, editRoom } = useAdminContext();
   const { errors, requesting } = useAuth();
   const { state } = useLocation();
-  console.log(state);
+
+  const handleClose = () => {
+    getAllHotels();
+    navigate(-3);
+  };
   return (
     <div className="reserve filters addAdmin">
       <div className="rContainer hContainer">
-        <IoCloseCircle className="rClose" onClick={() => navigate(-2)} />
+        <IoCloseCircle className="rClose" onClick={handleClose} />
         <p className="rHeading p-0 m-0">Add Rooms</p>
         <div className="p-2">
           <Form
             className="mt-0"
-            onChange={(e) => handleRoom(e, state)}
-            onSubmit={(e) => addNewRoom(e, state)}
+            onChange={(e) => handleRoom(e, state.id)}
+            onSubmit={(e) =>
+              state.edit ? editRoom(e, state.id) : addNewRoom(e, state.id)
+            }
           >
             <div className="d-flex justify-content-between align-items-center">
               <Form.Group className="mt-3">
@@ -79,14 +84,22 @@ const AddRoom = () => {
                 value={newRoom.rooms}
               />
             </Form.Group>
-
-            <button type="submit" className="rButton">
-              {requesting ? (
-                <i className="fa fa-spinner fa-spin"></i>
-              ) : (
-                "Add Room"
-              )}
-            </button>
+            <div className="rButtons">
+              <button
+                type="button"
+                className="rButton2"
+                onClick={() => navigate(-1)}
+              >
+                back
+              </button>
+              <button type="submit" className="rButton">
+                {requesting ? (
+                  <i className="fa fa-spinner fa-spin"></i>
+                ) : (
+                  "Add Room"
+                )}
+              </button>
+            </div>
           </Form>
         </div>
       </div>

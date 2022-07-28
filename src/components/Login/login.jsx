@@ -1,11 +1,24 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../store/authContext";
+import { NEW_USER } from "../../store/constants";
 
 const Login = () => {
-  const { handleLogin, error, handleChange, requesting, setCredentials } =
-    useAuth();
+  const {
+    handleLogin,
+    error,
+    setNewUser,
+    handleChange,
+    requesting,
+    setCredentials,
+    resetErrors,
+  } = useAuth();
   const navigate = useNavigate();
+
+  const handleMove = () => {
+    navigate("signUp", { state: "right-panel-active" });
+    setNewUser(NEW_USER);
+  };
   return (
     <div className="form-container sign-in-container">
       <form
@@ -21,9 +34,10 @@ const Login = () => {
         <input type="password" name="password" placeholder="Password" />
         <p
           className="loginforgot"
-          onClick={() =>
-            navigate("forgotPassword", { state: "right-panel-active" })
-          }
+          onClick={() => {
+            resetErrors();
+            navigate("forgotPassword", { state: "right-panel-active" });
+          }}
         >
           Forgot Password?
         </p>
@@ -34,11 +48,7 @@ const Login = () => {
 
         <div className="slidingparastwo">
           <p className="loginpara">New to Rentea?</p>
-          <p
-            className="ghost p-0 m-0"
-            id="signIn"
-            onClick={() => navigate("signUp", { state: "right-panel-active" })}
-          >
+          <p className="ghost p-0 m-0" id="signIn" onClick={() => handleMove()}>
             Sign Up
           </p>
         </div>

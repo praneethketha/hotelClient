@@ -5,23 +5,31 @@ import Table from "react-bootstrap/Table";
 import { Container } from "react-bootstrap";
 import Pagination from "../Pagination/pagination";
 import { useHotel } from "../../store/hotelContext";
-import AddHotel from "../AddHotel/addHotel";
+import { MdOutlineEdit, MdDelete } from "react-icons/md";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useAdminContext } from "../../store/adminContext";
+import { NEW_HOTEL } from "../../store/constants";
 
 let PageSize = 8;
 
 const HotelTable = () => {
-  // const [open, setOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const { hotels, handleSearch, searchTerm } = useHotel();
+  const { setNewHotel, removeHotel } = useAdminContext();
+  const { hotels, handleSearch, searchTerm, getHotel } = useHotel();
 
   const navigate = useNavigate();
+
+  const handleEdit = (item) => {
+    getHotel(item._id, setNewHotel, true);
+    navigate("addHotel", { state: true });
+  };
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return hotels.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, hotels]);
+
   return (
     <div className="booking-table-container mt-2">
       <Container className="pt-4 h-100 container-table">
@@ -50,6 +58,8 @@ const HotelTable = () => {
                 <td>Reviews</td>
                 <td>Rooms</td>
                 <td>Location</td>
+                <td></td>
+                <td></td>
               </tr>
             </thead>
             <tbody>
@@ -59,13 +69,22 @@ const HotelTable = () => {
                   rooms += element.roomNumbers.length;
                 });
                 return (
-                  <tr className="text-center ps-0 text-capitalize">
+                  <tr
+                    className="text-center ps-0 text-capitalize"
+                    key={item._id}
+                  >
                     <td>{item.name}</td>
                     <td>{item.basePrice}</td>
                     <td>{item.rating.toFixed(1)}</td>
                     <td>{item.reviews.length}</td>
                     <td>{rooms}</td>
                     <td>{item.city}</td>
+                    <td onClick={() => handleEdit(item)}>
+                      <MdOutlineEdit className="editHotel" />
+                    </td>
+                    <td onClick={() => removeHotel(item._id)}>
+                      <MdDelete className="delHotel" />
+                    </td>
                   </tr>
                 );
               })}
@@ -82,15 +101,16 @@ const HotelTable = () => {
         />
         <button
           className="editIcon addIcon"
-          onClick={() => navigate("addHotel")}
-          // onClick={() => setOpen(true)}
+          onClick={() => {
+            setNewHotel(NEW_HOTEL);
+            navigate("addHotel");
+          }}
         >
           +
         </button>
       </Container>
       <div></div>
       <Outlet />
-      {/* {open && <AddHotel setOpen={setOpen} />} */}
     </div>
   );
 };
