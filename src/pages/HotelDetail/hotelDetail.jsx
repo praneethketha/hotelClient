@@ -17,12 +17,19 @@ import { useAuth } from "../../store/authContext";
 import { Footer, Header } from "../../components";
 
 const HotelDetail = () => {
+  const [index, setIndex] = useState(0);
+
   const [open, setOpen] = useState(false);
+
   const { userId, currentUser } = useAuth();
   const { isLoading, getHotel, currentHotel, setCurrentHotel } = useHotel();
   const { id } = useParams();
 
   const navigate = useNavigate();
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
   const handleReserve = () => {
     if (userId) {
       navigate(`/reserve/${currentHotel._id}`);
@@ -41,7 +48,7 @@ const HotelDetail = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="w-85 mb-5 mx-auto">
+        <div className="w-85 mb-5 hotel-details mx-auto">
           <div className="hotelheader">
             <div className="hotelheaderleft">
               <div className="hotelheaderleftparas">
@@ -89,7 +96,41 @@ const HotelDetail = () => {
               </div>
             )}
           </div>
-
+          <div className="hotel-carousel">
+            {" "}
+            {currentHotel.images && (
+              <Carousel activeIndex={index} onSelect={handleSelect}>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={currentHotel.cover_pic}
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={currentHotel.images[0]}
+                    alt="Second slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={currentHotel.images[1]}
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={currentHotel.images[2]}
+                    alt="Third slide"
+                  />
+                </Carousel.Item>
+              </Carousel>
+            )}
+          </div>
           <div className="hotelpics">
             <div className="hotelpicsleft">
               <img src={currentHotel.cover_pic} alt="hotel" />
@@ -118,13 +159,14 @@ const HotelDetail = () => {
             </div>
             {currentHotel.location && (
               <Map
+                className="map"
                 latitude={currentHotel.location.coordinates[0]}
                 longitude={currentHotel.location.coordinates[1]}
                 address={currentHotel.location.address}
               />
             )}
           </div>
-          <Carousel>
+          <Carousel className="review-carousel">
             {currentHotel.reviews &&
               currentHotel.reviews.slice(0, 4).map((item) => (
                 <Carousel.Item className="reviewscorousel" key={item._id}>
